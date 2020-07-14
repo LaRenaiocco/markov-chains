@@ -9,8 +9,12 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
-    text_string = open(file_path).read()
+    text_string = open(file_path).read().replace('\n', ' ')
     print(text_string)
+    
+
+    # words = text_string.split(' ')
+    # print(words)
 
 
 
