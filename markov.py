@@ -9,17 +9,15 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
-    text_string = open(file_path).read().replace('\n', ' ')
-    print(text_string)
+    # text_string = open(file_path).read().replace('\n', ' ')
+    text_string = open(file_path).read()
+    # print(text_string)
     
 
     # words = text_string.split(' ')
     # print(words)
 
-
-
-
-    return "Contents of your file as one long string"
+    return text_string
 
 
 def make_chains(text_string):
@@ -49,9 +47,44 @@ def make_chains(text_string):
 
     chains = {}
 
+    all_words = text_string.split()
+
+    ## Adapted from solutions file.  This accounts for the last
+    # in the list because it won't have a variable.
+    all_words.append(None)
+    #- 2 from solutions file to accomodate last tuple in the dict.
+    for i in range(len(all_words) - 2): 
+        #print(all_words[i], all_words[i + 1])
+        word_tuple = (all_words[i], all_words[i + 1])
+        value = all_words[i + 2] # from solution
+        if word_tuple not in chains:
+            chains[word_tuple] = []
+
+        # solutions guide 
+        chains[word_tuple].append(value)
+
+
+        #print(word_tuple)
+        # chains[word_tuple] = chains.get(word_tuple, [])
+        # try:
+
+        #     # chains[word_tuple] = [].append(all_words[i + 2])
+        #     # chains[word_tuple] = [all_words[i + 2]]
+        # except:
+        #     continue
+        # print(chains)
+        # if word_tuple not in chains:
+        #     chains[word_tuple] = []
+        # try:
+        #     print(all_words[i + 2])
+        # except:
+        #     continue
+    print(chains)
+
+
     # your code goes here
 
-    return chains
+    # return chains
 
 
 def make_text(chains):
